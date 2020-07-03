@@ -1,0 +1,44 @@
+<div class="col-md-2" [formGroup]="addForm">
+    <div class="form-group">
+      <!-- <label class="label-control">Mayur Kailas Chudhari</label> -->
+      <marquee behavior="" direction="">Mayur Kailas Chaudhari</marquee>
+      <br>
+      <label class="switch">
+      <input type="checkbox" class="form-control" formControlName="items">
+      <span class="slider round">
+        <span class="on">
+          {{addForm.value.items_value}}
+        </span> 
+        <span class="off">
+          {{addForm.value.items_value}}
+        </span>
+      </span>
+      </label>
+      
+      <table>
+        <thead>
+          <button (click)="onAddRow()" *ngIf="addForm.get('rows')">add row</button>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of addForm.get('rows')?.controls;let index = index;">
+            <td>
+              FirstName : <input [formControl]="row.get('FirstName')" placeholder="FirstName">
+            </td>
+            <td>
+              LastName : <input [formControl]="row.get('LastName')" placeholder="LastName">
+            </td>
+            <td>
+              City : <input [formControl]="row.get('City')" placeholder="City">
+            </td>
+            <td>
+              <button (click)="onRemoveRow(index)">Remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+  
+    </div>
+  </div>
+  
+  <pre>{{rows.value | json}}</pre>
